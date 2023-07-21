@@ -23,6 +23,7 @@ navbar-links:
   About Me: "aboutme"
   Resources:
     - Projects: "projects"
+    - CV: "resume"
 # Author's home: "https://lauronjohn.github.io"
 
 ################
