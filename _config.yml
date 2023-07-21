@@ -50,8 +50,8 @@ round-avatar: true
 # Uncomment the links you want to show and add your information to each one.
 social-network-links:
   email: "john.lauron02@gmail.com"
-# rss: true  # remove this line if you don't want to show an RSS link at the bottom
-  facebook: john.lauron.94
+  rss: true  # remove this line if you don't want to show an RSS link at the bottom
+# facebook: john.lauron.94
   github: lauronjohn
 #  twitter: daattali
 #  patreon: DeanAttali
@@ -118,7 +118,7 @@ edit_page_button: false
 navbar-var-length: false
 
 # The keywords to associate with your website, for SEO purposes
- keywords: "my,list,of,keywords"
+# keywords: "my,list,of,keywords"
 
 ######################################
 # --- Colours / background image --- #
