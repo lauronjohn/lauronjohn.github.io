@@ -20,11 +20,11 @@ author: John Lauron
 ###############################################
 
 navbar-links:
+  Home: "https://lauronjohn.github.io"
   About Me: "aboutme"
   Resources:
     - Projects: "projects"
     - CV: "resume"
-# Author's home: "https://lauronjohn.github.io"
 
 ################
 # --- Logo --- #
