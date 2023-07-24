@@ -20,7 +20,7 @@ author: John Lauron
 ###############################################
 
 navbar-links:
-  Home: "https://lauronjohn.github.io"
+  Home: "index"
   About Me: "aboutme"
   Resources:
     - Projects: "projects"
