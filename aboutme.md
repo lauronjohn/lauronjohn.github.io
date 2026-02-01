@@ -5,7 +5,7 @@ subtitle: "cat ~/whoami.txt"
 ---
 
 ```bash
-$ whoami
+$ JOHN LAURON / 23-years old / FILIPINO
 
 ```
 <p align="center">                    
