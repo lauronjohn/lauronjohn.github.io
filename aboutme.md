@@ -6,7 +6,11 @@ subtitle: "cat ~/whoami.txt"
 
 ```bash
 $ whoami
+
 ```
+<p align="center">                    
+  <img src="/assets/img/john.jpg" alt="John Lauron" style="max-width: 300px; border-radius: 50%;">                                 
+</p>   
 
 I'm a **Software Engineer** navigating the endless streams of Artificial Intelligence and Robotics. My toolkit includes:
 
