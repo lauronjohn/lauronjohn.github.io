@@ -8,29 +8,29 @@ subtitle: "cat ~/whoami.txt"
 $ whoami
 ```
 
-I'm a **digital explorer** navigating the endless streams of data in cyberspace. My toolkit includes:
+I'm an **Software Engineer** navigating the endless streams of Artificial Intelligence and Robotics. My toolkit includes:
 
-- `vim` - my weapon of choice
+- `Cusor IDE` - my weapon of choice
 - `terminal` - my natural habitat
 - `coffee` - fuel for late-night coding sessions
-- `curiosity` - the drive that keeps me learning
+- `innovation` - the drive that keeps me learning
 
 ### System Specifications
 
 ```yaml
-os: Linux
+os: MacOS / Linux (Ubuntu) / Windows 11
 shell: zsh
-editor: vim/neovim
+editor: Cursor IDE/VS Code
 languages:
   - Python
-  - JavaScript
-  - Rust
-  - Go
+  - Java
+  - C++
+  - C#
 interests:
-  - Security Research
-  - Open Source
-  - System Architecture
-  - CTF Challenges
+  - AI Agents 
+  - Large Language Models (LLMs)
+  - Software Architecture
+  - Network and Cybersecurity
 ```
 
 ### My Mission
