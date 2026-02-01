@@ -5,59 +5,128 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" crossorigin="anonymous">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
-    <title>Welcome To My Portfolio</title>
+    <title>John Lauron | Hacker Portfolio</title>
 </head>
 
-<body id="bg-img">
+<body>
+    <!-- Matrix Rain Canvas -->
+    <canvas id="matrix-bg"></canvas>
+
+    <!-- Scanline Overlay -->
+    <div class="scanlines"></div>
+
+    <!-- Navigation -->
     <header>
-        <div class="menu-btn">
-            <div class="btn-line"></div>
-            <div class="btn-line"></div>
-            <div class="btn-line"></div> 
+        <div class="menu-btn" id="menu-btn">
+            <span class="menu-btn__burger"></span>
         </div>
 
-        <nav class="menu">
-            <div class="menu-branding">
-                <div class="portrait"></div>
-            </div>
-            <ul class="menu-nav">
-                <li class="nav-item">
-                    <a href="/" class="nav-link">Home</a>
+        <nav class="nav" id="nav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="/" class="nav__link active">
+                        <span class="nav__link-prefix">&gt;</span> home
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a href="/about.html" class="nav-link">About Me</a>
+                <li class="nav__item">
+                    <a href="/about.html" class="nav__link">
+                        <span class="nav__link-prefix">&gt;</span> about_me
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a href="/work.html" class="nav-link">My Work</a>
+                <li class="nav__item">
+                    <a href="/work.html" class="nav__link">
+                        <span class="nav__link-prefix">&gt;</span> my_work
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a href="/contact.html" class="nav-link">How To Reach Me</a>
+                <li class="nav__item">
+                    <a href="/contact.html" class="nav__link">
+                        <span class="nav__link-prefix">&gt;</span> contact
+                    </a>
                 </li>
             </ul>
         </nav>
     </header>
 
-    <main id="home">
-        <h1 class="lg-heading">John <span class="text-secondary">Lauron</span>
-        </h1>
-        <h2 class="sm-heading">Web Developer, Programmer, Designer & Entrepreneur</h2>
-        <div class="icons">
-            <a href="#!">
-                <i class="fa-brands fa-twitter fa-2xl"></i>
-            </a>
-            <a href="#!">
-                <i class="fa-brands fa-facebook fa-2xl"></i>
-            </a>
-            <a href="#!">
-                <i class="fa-brands fa-linkedin fa-2xl"></i>
-            </a>
-            <a href="#!">
-                <i class="fa-brands fa-github fa-2xl"></i>
-            </a>
+    <!-- Main Content -->
+    <main class="home">
+        <div class="terminal">
+            <div class="terminal__header">
+                <div class="terminal__controls">
+                    <span class="terminal__control terminal__control--close"></span>
+                    <span class="terminal__control terminal__control--minimize"></span>
+                    <span class="terminal__control terminal__control--maximize"></span>
+                </div>
+                <div class="terminal__title">guest@johnlauron:~</div>
+            </div>
+            <div class="terminal__body">
+                <div class="terminal__line">
+                    <span class="terminal__prompt">$</span>
+                    <span class="terminal__command">whoami</span>
+                </div>
+                <h1 class="glitch" data-text="John Lauron">John Lauron</h1>
+
+                <div class="terminal__line">
+                    <span class="terminal__prompt">$</span>
+                    <span class="terminal__command">cat skills.txt</span>
+                </div>
+                <h2 class="typing-text">
+                    <span class="bracket">[</span> Web Developer <span class="separator">//</span> Programmer <span class="separator">//</span> Designer <span class="separator">//</span> Entrepreneur <span class="bracket">]</span>
+                </h2>
+
+                <div class="terminal__line">
+                    <span class="terminal__prompt">$</span>
+                    <span class="terminal__command">ls ./social_links/</span>
+                </div>
+                <div class="social-links">
+                    <a href="#!" class="social-link" aria-label="Twitter">
+                        <i class="fa-brands fa-twitter"></i>
+                        <span class="social-link__label">twitter</span>
+                    </a>
+                    <a href="#!" class="social-link" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                        <span class="social-link__label">facebook</span>
+                    </a>
+                    <a href="#!" class="social-link" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <span class="social-link__label">linkedin</span>
+                    </a>
+                    <a href="https://github.com/lauronjohn" class="social-link" aria-label="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                        <span class="social-link__label">github</span>
+                    </a>
+                </div>
+
+                <div class="terminal__line terminal__line--input">
+                    <span class="terminal__prompt">$</span>
+                    <span class="terminal__cursor"></span>
+                </div>
+            </div>
         </div>
+
+        <!-- Floating Elements -->
+        <div class="floating-code floating-code--1">&lt;/&gt;</div>
+        <div class="floating-code floating-code--2">{ }</div>
+        <div class="floating-code floating-code--3">01</div>
     </main>
+
+    <!-- Status Bar -->
+    <footer class="status-bar">
+        <div class="status-bar__left">
+            <span class="status-bar__item">
+                <i class="fa-solid fa-circle status-bar__indicator"></i>
+                SYSTEM ONLINE
+            </span>
+        </div>
+        <div class="status-bar__right">
+            <span class="status-bar__item" id="current-time"></span>
+            <span class="status-bar__item">v1.0.0</span>
+        </div>
+    </footer>
+
     <script src="js/main.js"></script>
 </body>
 </html>

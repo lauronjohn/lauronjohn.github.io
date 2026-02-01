@@ -1,71 +1,628 @@
+// ===================================
+// HACKER THEME - Main SCSS
+// John Lauron Portfolio
+// ===================================
+// Note: This SCSS file serves as a source of truth for styling.
+// The compiled CSS in css/main.css contains the full implementation.
+// Run `npm run sass` to compile SCSS to CSS.
+
 @import 'config';
 
-* {
+// Reset & Base
+*, *::before, *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    @include background;
-    background: $primary-color;
-    color: #fff;
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $font-mono;
+    background: $bg-primary;
+    color: $text-primary;
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+// Matrix Background
+#matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.5;
+    z-index: -2;
+    opacity: 0.15;
 }
 
-// Headings
-h1, h2, h3 {
-    margin: 0;
-    font-weight: 400;
+// Scanlines
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.1) 0px,
+        rgba(0, 0, 0, 0.1) 1px,
+        transparent 1px,
+        transparent 2px
+    );
 
-    &.lg-heading{
-        font-size: 6rem;
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            ellipse at center,
+            transparent 0%,
+            rgba(0, 0, 0, 0.3) 100%
+        );
     }
-
-    &.sm-heading{
-        margin-bottom: 2rem;
-        padding: 0.2rem 1rem;
-        background: rgba(lighten($primary-color, 2),0.5);
-    }
 }
 
-a {
-    color: #fff;
-    text-decoration: none;
-}
-
+// Header & Navigation
 header {
     position: fixed;
-    z-index: 2;
+    top: 0;
+    left: 0;
     width: 100%;
+    padding: 1rem 2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, $bg-primary 0%, transparent 100%);
 }
 
-.text-secondary {
-    color: $secondary-color;
+// Hamburger Menu
+.menu-btn {
+    position: relative;
+    width: 35px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 101;
+
+    &__burger {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        height: 2px;
+        background: $text-primary;
+        box-shadow: 0 0 10px $accent-glow;
+        transition: $transition-normal;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: $text-primary;
+            box-shadow: 0 0 10px $accent-glow;
+            transition: $transition-normal;
+        }
+
+        &::before { top: -10px; }
+        &::after { top: 10px; }
+    }
+
+    &.open .menu-btn__burger {
+        background: transparent;
+        box-shadow: none;
+
+        &::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+
+        &::after {
+            top: 0;
+            transform: rotate(-45deg);
+        }
+    }
 }
 
-main {
-    padding: 4rem;
-    height: 100%;
+// Navigation Panel
+.nav {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100vh;
+    background: rgba($bg-secondary, 0.98);
+    border-left: 1px solid $text-dim;
+    padding: 6rem 2rem 2rem;
+    transition: $transition-normal;
+    box-shadow: -5px 0 30px rgba(0, 255, 65, 0.1);
 
-    .icons{
-        margin-top: 1rem;
+    &.open {
+        right: 0;
+    }
 
-        a {
-            padding: 0.4rem;
+    &__list {
+        list-style: none;
+    }
 
-            &:hover {
-                color:$secondary-color;
-                @include easeOut()
+    &__item {
+        margin-bottom: 1.5rem;
+        transform: translateX(50px);
+        opacity: 0;
+        transition: $transition-normal;
+    }
+
+    &.open &__item {
+        transform: translateX(0);
+        opacity: 1;
+
+        @for $i from 1 through 4 {
+            &:nth-child(#{$i}) {
+                transition-delay: #{$i * 0.1}s;
             }
         }
     }
 
-    &#home {
-        overflow: hidden;
-        h1 {
-            margin-top: 20vh;
+    &__link {
+        display: block;
+        color: $text-dim;
+        text-decoration: none;
+        font-size: 1.1rem;
+        padding: 0.5rem 1rem;
+        border-left: 2px solid transparent;
+        transition: $transition-fast;
+        text-transform: lowercase;
+
+        &:hover,
+        &.active {
+            color: $text-primary;
+            border-left-color: $text-primary;
+            background: rgba(0, 255, 65, 0.05);
+            @include glowText;
         }
+
+        &-prefix {
+            color: $accent-cyan;
+            margin-right: 0.5rem;
+        }
+    }
+}
+
+// Main Content
+.home {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+}
+
+// Terminal Window
+.terminal {
+    @include terminalWindow;
+    width: 100%;
+    max-width: 800px;
+    overflow: hidden;
+    box-shadow:
+        0 0 40px rgba(0, 255, 65, 0.1),
+        inset 0 0 100px rgba(0, 255, 65, 0.02);
+    animation: terminalGlow 3s ease-in-out infinite alternate;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        background: $bg-secondary;
+        border-bottom: 1px solid $terminal-border;
+    }
+
+    &__controls {
+        display: flex;
+        gap: 8px;
+    }
+
+    &__control {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+
+        &--close { background: $error; }
+        &--minimize { background: $warning; }
+        &--maximize { background: $text-primary; }
+    }
+
+    &__title {
+        flex: 1;
+        text-align: center;
+        font-size: 0.85rem;
+        color: $text-dim;
+    }
+
+    &__body {
+        padding: 2rem;
+    }
+
+    &__line {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+
+        &--input {
+            margin-top: 2rem;
+        }
+    }
+
+    &__prompt {
+        color: $accent-cyan;
+        font-weight: 600;
+    }
+
+    &__command {
+        color: $text-dim;
+    }
+
+    &__cursor {
+        display: inline-block;
+        width: 10px;
+        height: 1.2em;
+        background: $text-primary;
+        animation: blink 1s step-end infinite;
+    }
+}
+
+// Glitch Effect
+.glitch {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 700;
+    color: $text-primary;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 1rem 0 2rem;
+    @include glowText;
+
+    &::before,
+    &::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &::before {
+        color: $accent-cyan;
+        animation: glitch-1 2s infinite linear alternate-reverse;
+        clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    }
+
+    &::after {
+        color: $accent-purple;
+        animation: glitch-2 3s infinite linear alternate-reverse;
+        clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+    }
+}
+
+// Typing Text
+.typing-text {
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    font-weight: 400;
+    color: $text-secondary;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.bracket {
+    color: $accent-cyan;
+    font-weight: 600;
+}
+
+.separator {
+    color: $accent-purple;
+    margin: 0 0.5rem;
+}
+
+// Social Links
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(0, 255, 65, 0.05);
+    border: 1px solid $terminal-border;
+    border-radius: 4px;
+    color: $text-dim;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: $transition-fast;
+
+    &:hover {
+        color: $text-primary;
+        border-color: $text-primary;
+        background: rgba(0, 255, 65, 0.1);
+        @include glowBox;
+        transform: translateY(-2px);
+    }
+
+    i {
+        font-size: 1.2rem;
+    }
+
+    &__label {
+        text-transform: lowercase;
+    }
+}
+
+// Floating Code
+.floating-code {
+    position: fixed;
+    font-size: 2rem;
+    color: rgba(0, 255, 65, 0.1);
+    font-weight: 700;
+    pointer-events: none;
+    z-index: -1;
+
+    &--1 {
+        top: 20%;
+        left: 10%;
+        animation: float 6s ease-in-out infinite;
+    }
+
+    &--2 {
+        top: 60%;
+        right: 10%;
+        animation: float 8s ease-in-out infinite reverse;
+    }
+
+    &--3 {
+        bottom: 20%;
+        left: 20%;
+        animation: float 7s ease-in-out infinite;
+    }
+}
+
+// Status Bar
+.status-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1.5rem;
+    background: $bg-secondary;
+    border-top: 1px solid $terminal-border;
+    font-size: 0.75rem;
+    color: $text-dim;
+    z-index: 50;
+
+    &__left,
+    &__right {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    &__indicator {
+        font-size: 0.5rem;
+        color: $text-primary;
+        animation: pulse 2s ease-in-out infinite;
+    }
+}
+
+// Animations
+@keyframes terminalGlow {
+    from {
+        box-shadow:
+            0 0 40px rgba(0, 255, 65, 0.1),
+            inset 0 0 100px rgba(0, 255, 65, 0.02);
+    }
+    to {
+        box-shadow:
+            0 0 60px rgba(0, 255, 65, 0.15),
+            inset 0 0 100px rgba(0, 255, 65, 0.03);
+    }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes glitch-1 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-3px, 3px); }
+    40% { transform: translate(-3px, -3px); }
+    60% { transform: translate(3px, 3px); }
+    80% { transform: translate(3px, -3px); }
+}
+
+@keyframes glitch-2 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(3px, -3px); }
+    40% { transform: translate(3px, 3px); }
+    60% { transform: translate(-3px, -3px); }
+    80% { transform: translate(-3px, 3px); }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.1;
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+        opacity: 0.2;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+// Responsive Styles
+@include tablet {
+    header {
+        padding: 1rem;
+    }
+
+    .nav {
+        width: 100%;
+        right: -100%;
+    }
+
+    .terminal__body {
+        padding: 1.5rem;
+    }
+
+    .glitch {
+        font-size: clamp(2rem, 10vw, 3.5rem);
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .social-link {
+        padding: 0.6rem 1rem;
+    }
+
+    .floating-code {
+        display: none;
+    }
+}
+
+@include mobile {
+    html {
+        font-size: 14px;
+    }
+
+    .home {
+        padding: 1rem;
+        padding-bottom: 4rem;
+    }
+
+    .terminal {
+        &__header {
+            padding: 0.5rem 0.75rem;
+        }
+
+        &__title {
+            font-size: 0.75rem;
+        }
+
+        &__body {
+            padding: 1rem;
+        }
+
+        &__line {
+            font-size: 0.8rem;
+        }
+    }
+
+    .glitch {
+        font-size: clamp(1.8rem, 12vw, 2.5rem);
+    }
+
+    .typing-text {
+        font-size: 0.85rem;
+    }
+
+    .social-links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .social-link {
+        justify-content: center;
+    }
+
+    .status-bar {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.75rem;
+
+        &__left,
+        &__right {
+            gap: 1rem;
+        }
+    }
+}
+
+@include desktop {
+    .terminal {
+        max-width: 900px;
+    }
+
+    .floating-code {
+        font-size: 3rem;
+    }
+}
+
+@include reduced-motion {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .scanlines {
+        display: none;
+    }
+}
+
+// Selection
+::selection {
+    background: $text-primary;
+    color: $bg-primary;
+}
+
+// Scrollbar
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: $bg-primary;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $text-dim;
+    border-radius: 4px;
+
+    &:hover {
+        background: $text-primary;
     }
 }
