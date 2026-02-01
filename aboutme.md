@@ -8,7 +8,7 @@ subtitle: "cat ~/whoami.txt"
 $ whoami
 ```
 
-I'm an **Software Engineer** navigating the endless streams of Artificial Intelligence and Robotics. My toolkit includes:
+I'm a **Software Engineer** navigating the endless streams of Artificial Intelligence and Robotics. My toolkit includes:
 
 - `Cusor IDE` - my weapon of choice
 - `terminal` - my natural habitat
