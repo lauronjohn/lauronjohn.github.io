@@ -10,21 +10,21 @@
 ############################
 
 # Name of website
-title: My website
+title: "~/hacker_zone"
 
 # Your name to show in the footer
-author: Some Person
+author: "root@localhost"
 
 ###############################################
 # --- List of links in the navigation bar --- #
 ###############################################
 
 navbar-links:
-  About Me: "aboutme"
-  Resources:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
-    - Learn markdown: "https://www.markdowntutorial.com/"
-  Author's home: "https://deanattali.com"
+  ./about: "aboutme"
+  ./resources:
+    - "docs/": "https://beautifuljekyll.com"
+    - "learn.md": "https://www.markdowntutorial.com/"
+  ./github: "https://github.com"
 
 ################
 # --- Logo --- #
@@ -102,7 +102,7 @@ share-links-active:
 
 # How to display the link to your website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "MyWebsite.com"
+url-pretty: "localhost:1337"
 
 # Add the website title to the title of every page
 title-on-all-pages: true
@@ -136,17 +136,21 @@ navbar-var-length: false
 
 # Personalize the colours in your website. Colour values can be any valid CSS colour
 
-page-col: "#FFFFFF"
-text-col: "#404040"
-link-col: "#008AFF"
-hover-col: "#0085A1"
-navbar-col: "#EAEAEA"
-navbar-text-col: "#404040"
-navbar-border-col: "#DDDDDD"
-footer-col: "#EAEAEA"
-footer-text-col: "#777777"
-footer-link-col: "#404040"
-footer-hover-col: "#0085A1"
+# Hacker Theme Color Scheme
+page-col: "#0a0a0a"
+text-col: "#00ff41"
+link-col: "#00d4ff"
+hover-col: "#ff0055"
+navbar-col: "#0d0d0d"
+navbar-text-col: "#00ff41"
+navbar-border-col: "#1a1a1a"
+footer-col: "#0d0d0d"
+footer-text-col: "#00ff41"
+footer-link-col: "#00d4ff"
+footer-hover-col: "#ff0055"
+
+# Mobile theme color (green glow)
+mobile-theme-col: "#00ff41"
 
 # Alternatively, the navbar, footer, and page background can be set to an image
 # instead of colour
@@ -159,12 +163,12 @@ footer-hover-col: "#0085A1"
 #mobile-theme-col: "#0085A1"
 
 # For any extra visual customization, you can include additional CSS files in every page on your site. List any custom CSS files here
-#site-css:
-#  - "/assets/css/custom-styles.css"
+site-css:
+  - "/assets/css/hacker-theme.css"
 
 # If you have common JavaScript files that should be included in every page, list them here
-#site-js:
-#  - "/assets/js/custom-script.js"
+site-js:
+  - "/assets/js/matrix-rain.js"
 
 #################################
 # --- Web Analytics Section --- #

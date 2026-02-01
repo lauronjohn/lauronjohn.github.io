@@ -1,16 +1,57 @@
 ---
 layout: page
-title: About me
-subtitle: Why you'd want to go on a date with me
+title: ./about
+subtitle: "cat ~/whoami.txt"
 ---
 
-My name is Inigo Montoya. I have the following qualities:
+```bash
+$ whoami
+```
 
-- I rock a great mustache
-- I'm extremely loyal to my family
+I'm a **digital explorer** navigating the endless streams of data in cyberspace. My toolkit includes:
 
-What else do you need?
+- `vim` - my weapon of choice
+- `terminal` - my natural habitat
+- `coffee` - fuel for late-night coding sessions
+- `curiosity` - the drive that keeps me learning
 
-### My story
+### System Specifications
 
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](https://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+```yaml
+os: Linux
+shell: zsh
+editor: vim/neovim
+languages:
+  - Python
+  - JavaScript
+  - Rust
+  - Go
+interests:
+  - Security Research
+  - Open Source
+  - System Architecture
+  - CTF Challenges
+```
+
+### My Mission
+
+```
+> Decrypt the unknown
+> Debug the impossible
+> Deploy the future
+```
+
+Whether it's diving deep into system internals, contributing to open source projects, or exploring the latest in cybersecurity - I'm always ready to learn something new.
+
+### Connect
+
+```bash
+$ ping -c 1 me
+# Response: Ready for collaboration
+```
+
+Feel free to reach out through any of the channels below. Let's build something awesome together.
+
+---
+
+*"In a world of ones and zeros, be the one who makes them dance."*
