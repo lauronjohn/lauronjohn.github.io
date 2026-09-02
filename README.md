@@ -1,163 +1,134 @@
 ```
- _                _
-| |__   __ _  ___| | _____ _ __   _______  _ __   ___
-| '_ \ / _` |/ __| |/ / _ \ '__| |_  / _ \| '_ \ / _ \
-| | | | (_| | (__|   <  __/ |     / / (_) | | | |  __/
-|_| |_|\__,_|\___|_|\_\___|_|    /___\___/|_| |_|\___|
-
+  _                _
+ | |__   __ _  ___| | _____ _ __   _______  _ __   ___
+ | '_ \ / _` |/ __| |/ / _ \ '__| |_  / _ \| '_ \ / _ \
+ | | | | (_| | (__|   <  __/ |     / / (_) | | | |  __/
+ |_| |_|\__,_|\___|_|\_\___|_|    /___\___/|_| |_|\___|
 ```
 
-# ~/hacker_zone
+# John Lauron
 
-> `root@localhost:~# A terminal-inspired personal website`
+> `root@localhost:~# Software Engineer building AI and resilient systems`
 
-A custom hacker/matrix-themed Jekyll website featuring glowing neon aesthetics, terminal-style typography, and interactive visual effects.
-
-## Features
-
-```yaml
-theme:
-  style: "Hacker / Matrix / Cyberpunk"
-  colors:
-    primary: "#00ff41"      # Matrix green
-    secondary: "#00d4ff"    # Cyber cyan
-    accent: "#ff0055"       # Neon pink
-    background: "#0a0a0a"   # Dark terminal
-```
-
-### Visual Effects
-
-- **Matrix Rain Animation** - Falling green characters canvas background
-- **CRT Scanlines** - Retro monitor overlay effect
-- **Screen Flicker** - Subtle animation for authentic terminal feel
-- **Glowing Text** - Neon glow on headings with pulse animation
-- **Custom Scrollbars** - Themed scrollbars matching the color scheme
-
-### Typography
-
-- **Monospace Fonts** - Fira Code, JetBrains Mono, Share Tech Mono
-- **Terminal Prefixes** - `>` symbols and `$` prompts throughout
-- **Code-Style Navigation** - `./about`, `./resources` link formatting
-
-### Syntax Highlighting
-
-Custom dark theme for code blocks featuring:
-- Keywords in cyan
-- Strings in neon pink
-- Numbers in gold
-- Comments in dim green
-- Functions in bright teal
-
-## Tech Stack
-
-```bash
-$ cat /etc/stack.conf
-```
-
-| Component | Technology |
-|-----------|------------|
-| Framework | Jekyll 6.0.1+ |
-| Base Theme | Beautiful Jekyll |
-| Styling | Custom CSS + CSS Variables |
-| Fonts | Google Fonts (Fira Code, JetBrains Mono) |
-| Icons | Font Awesome 6.5 |
-| Layout | Bootstrap 4.4.1 |
-
-## Project Structure
-
-```
-~/hacker_zone/
-├── _config.yml           # Site configuration
-├── _layouts/             # Page templates
-├── _includes/            # Reusable components
-├── _posts/               # Blog posts
-├── assets/
-│   ├── css/
-│   │   ├── hacker-theme.css       # Custom theme styles
-│   │   ├── beautifuljekyll.css    # Base styles
-│   │   └── pygment_highlights.css # Syntax highlighting
-│   └── js/
-│       └── matrix-rain.js         # Background animation
-├── index.html            # Homepage
-├── aboutme.md            # About page
-├── 404.html              # Custom error page
-└── tags.html             # Tag index
-```
-
-## Local Development
-
-```bash
-# Clone the repository
-$ git clone https://github.com/yourusername/yourusername.github.io.git
-$ cd yourusername.github.io
-
-# Install dependencies
-$ bundle install
-
-# Start local server
-$ bundle exec jekyll serve
-
-# Access at http://localhost:4000
-```
-
-## Customization
-
-### Color Scheme
-
-Edit `_config.yml` to modify the color palette:
-
-```yaml
-# Hacker Theme Color Scheme
-page-col: "#0a0a0a"
-text-col: "#00ff41"
-link-col: "#00d4ff"
-hover-col: "#ff0055"
-navbar-col: "#0d0d0d"
-navbar-text-col: "#00ff41"
-footer-col: "#0d0d0d"
-footer-text-col: "#00ff41"
-```
-
-### Adding Blog Posts
-
-Create new posts in `_posts/` using the format `YYYY-MM-DD-title.md`:
-
-```yaml
----
-layout: post
-title: "Your Post Title"
-subtitle: "A brief description"
-tags: [security, code, tutorial]
----
-
-Your content here...
-```
-
-### Disabling Effects
-
-To disable visual effects, comment out in `_config.yml`:
-
-```yaml
-# site-js:
-#   - "/assets/js/matrix-rain.js"
-```
+A terminal/matrix-inspired personal website built with [Jekyll](https://jekyllrb.com/) on the [Beautiful Jekyll](https://beautifuljekyll.com/) theme. Live at [johnlauron.me](https://johnlauron.me).
 
 ## Pages
 
 | Route | Description |
 |-------|-------------|
-| `/` | Homepage with blog post feed |
+| `/` | Landing page (`whoami`, CTAs, featured projects) |
+| `/blog` | Blog post feed |
+| `/projects` | Project cards + case-study pages |
+| `/resume` | HTML resume + PDF download |
 | `/aboutme` | Terminal-styled about page |
+| `/archive` | Curated bookmarks (tools, websites, reading) |
+| `/contact` | Email + social links |
 | `/tags` | Post tag index |
 | `/404` | ASCII art error page |
 
-## Browser Support
+## Tech Stack
 
-Tested and optimized for:
-- Chrome/Chromium (recommended)
-- Firefox
-- Safari
-- Edge
+| Component | Technology |
+|-----------|------------|
+| Framework | Jekyll 4.x |
+| Base Theme | Beautiful Jekyll 6.0.1 |
+| Styling | Custom CSS (`assets/css/hacker-theme.css`) |
+| Fonts | Fira Code, JetBrains Mono, Share Tech Mono |
+| Icons | Font Awesome 6.5 |
+| Layout | Bootstrap 4.4.1 |
+
+## Visual effects
+
+- Matrix rain background (toggleable, persists via `localStorage`)
+- CRT scanlines overlay
+- Terminal typing effect on page subtitles
+- Scroll-reveal fade-ins
+- Glowing headings and custom scrollbars
+
+Effects respect `prefers-reduced-motion`, and the matrix rain can be toggled from the homepage button.
+
+## How to edit
+
+Everything is plain Markdown/YAML — edit on GitHub (pencil ✏️ on any file → "Commit changes") or locally, then push. CI rebuilds and deploys automatically.
+
+### Add a blog post
+
+Create a file in `_posts/` named `YYYY-MM-DD-slug.md`:
+
+```yaml
+---
+layout: post
+title: My new post
+subtitle: "optional subtitle"
+tags: [ai, projects]
+comments: true
+author: John Lauron
+---
+
+Write the post body in Markdown.
+```
+
+It automatically appears on `/blog` and in search.
+
+### Add an archive link
+
+Open `archive.md` and add a bullet under the right section:
+
+```markdown
+- [Some site](https://example.com) — one-line note.
+```
+
+### Add a project
+
+1. Create `projects/my-project.md` (copy the front matter from an existing case study).
+2. Add a card to `projects.md`.
+3. Add a link in `index.html` under `featured_projects`.
+
+### Add/edit a page
+
+Every page is a Markdown file at the repo root (`aboutme.md`, `resume.md`, `contact.md`, `archive.md`). Edit the Markdown directly.
+
+### Change navigation
+
+Edit the `navbar-links:` block in `_config.yml`.
+
+### Colors & site settings
+
+Edit `_config.yml` (color palette, social links, SEO description, etc.).
+
+## Project structure
+
+```
+.
+├── _config.yml           # Site configuration
+├── _layouts/             # Page templates (blog, page, home, post, ...)
+├── _includes/            # Reusable components (nav, head, footer, ...)
+├── _posts/               # Blog posts
+├── projects/             # Project case-study pages
+├── assets/
+│   ├── css/hacker-theme.css   # Custom theme styles
+│   ├── js/matrix-rain.js      # Matrix rain + typing + scroll reveal
+│   └── files/                 # Resume PDF and other downloads
+├── index.html            # Landing page
+├── blog.md               # Blog index
+├── projects.md           # Project index
+├── resume.md             # HTML resume
+├── aboutme.md            # About page
+├── archive.md            # Bookmarks page
+├── contact.md            # Contact page
+├── 404.html              # Custom error page
+└── tags.html             # Tag index
+```
+
+## Local development
+
+```bash
+git clone https://github.com/lauronjohn/lauronjohn.github.io.git
+cd lauronjohn.github.io
+bundle install
+bundle exec jekyll serve
+# http://localhost:4000
+```
 
 ## Credits
 
@@ -167,12 +138,4 @@ Tested and optimized for:
 
 ## License
 
-This project is open source under the MIT License.
-
----
-
-```bash
-$ echo "Happy hacking!"
-Happy hacking!
-$ _
-```
+MIT License.
