@@ -2,9 +2,6 @@
    HACKER THEME - Terminal/Matrix Style
    =========================================== */
 
-/* Import monospace fonts */
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&family=Share+Tech+Mono&display=swap');
-
 :root {
   /* Override fonts with monospace */
   --body-font: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
@@ -30,7 +27,7 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  opacity: 0.15;
+  opacity: 0.2;
   pointer-events: none;
 }
 
@@ -62,21 +59,19 @@ body::before {
   z-index: 9999;
 }
 
-/* CRT screen flicker effect */
-@keyframes flicker {
-  0% { opacity: 0.97; }
-  50% { opacity: 1; }
-  100% { opacity: 0.98; }
-}
-
-body {
-  animation: flicker 0.15s infinite;
-}
+/* CRT screen flicker effect — removed for readability (see prefers-reduced-motion below) */
 
 /* Terminal cursor blink */
 @keyframes cursor-blink {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
+}
+
+/* Terminal cursor appended to page title by matrix-rain.js */
+.terminal-cursor {
+  color: var(--cyber-cyan);
+  animation: cursor-blink 1s step-end infinite;
+  font-weight: 300;
 }
 
 /* Glowing text effect for headings */
@@ -469,6 +464,18 @@ blockquote::before {
   margin: 1.5rem 0 2rem;
 }
 
+.copy-toast {
+  color: var(--cyber-cyan);
+  font-family: var(--body-font);
+  margin-top: 0.5rem;
+}
+
+.blog-empty .empty-prompt {
+  color: var(--cyber-cyan);
+  font-family: var(--header-font);
+  margin-bottom: 0.25rem;
+}
+
 .home-cta-btn {
   display: inline-block;
   border: 1px solid var(--matrix-green);
@@ -633,6 +640,23 @@ body.error-page h1 {
 .project-card-image-placeholder {
   color: var(--cyber-cyan);
   background: rgba(0, 212, 255, 0.06);
+  width: 100%;
+  min-height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ascii-thumb {
+  margin: 0;
+  padding: 0.5rem;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: var(--cyber-cyan);
+  font-size: 0.7rem;
+  line-height: 1.35;
+  text-align: left;
 }
 
 .project-links {
@@ -647,4 +671,36 @@ body.error-page h1 {
   background: rgba(0, 255, 65, 0.08);
   padding: 0.2rem 0.5rem;
   font-size: 0.8rem;
+}
+
+/* Scroll-reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    display: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .terminal-cursor,
+  .intro-header .page-heading h1,
+  .intro-header .post-heading h1,
+  body.error-page h1 {
+    animation: none !important;
+  }
 }

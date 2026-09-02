@@ -1,46 +1,64 @@
 /**
- * Matrix Rain Animation
- * Creates the iconic falling green characters effect
+ * Hacker theme interactivity:
+ *  - Matrix rain background (toggleable, persisted, respects reduced motion)
+ *  - Terminal typing effect on page subtitles
+ *  - Scroll-reveal fade-ins
+ *  - Terminal cursor appended to page titles
  */
 
 (function() {
   'use strict';
 
-  const MATRIX_PREF_KEY = 'matrix-effect-enabled';
-  let canvas = null;
-  let animationTimer = null;
-  let resizeHandler = null;
-  let visibilityHandler = null;
+  var MATRIX_PREF_KEY = 'matrix-effect-enabled';
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var canvas = null;
+  var animationTimer = null;
+  var resizeHandler = null;
+  var visibilityHandler = null;
+
+  /* ---------- Matrix rain ---------- */
+
+  function safeGetPreference() {
+    try {
+      var saved = localStorage.getItem(MATRIX_PREF_KEY);
+      return saved === null ? true : saved === 'true';
+    } catch (e) {
+      return true;
+    }
+  }
 
   function isMatrixEnabled() {
-    const savedPreference = localStorage.getItem(MATRIX_PREF_KEY);
-    return savedPreference === null ? true : savedPreference === 'true';
+    if (prefersReducedMotion) return false;
+    return safeGetPreference();
   }
 
   function updateMatrixToggleUI(enabled) {
-    const toggles = document.querySelectorAll('[data-matrix-toggle]');
-    toggles.forEach(function(toggle) {
-      toggle.textContent = enabled ? 'Matrix Effect: ON' : 'Matrix Effect: OFF';
-      toggle.setAttribute('aria-pressed', String(enabled));
-    });
+    var toggles = document.querySelectorAll('[data-matrix-toggle]');
+    for (var i = 0; i < toggles.length; i++) {
+      toggles[i].textContent = enabled ? 'Matrix Effect: ON' : 'Matrix Effect: OFF';
+      toggles[i].setAttribute('aria-pressed', String(enabled));
+    }
   }
 
   function setMatrixPreference(enabled) {
-    localStorage.setItem(MATRIX_PREF_KEY, String(enabled));
+    try {
+      localStorage.setItem(MATRIX_PREF_KEY, String(enabled));
+    } catch (e) {
+      /* storage unavailable — fall back to in-memory only */
+    }
     updateMatrixToggleUI(enabled);
   }
 
   function startMatrixRain() {
     if (canvas) return;
 
-    // Create canvas element
     canvas = document.createElement('canvas');
     canvas.id = 'matrix-canvas';
     document.body.insertBefore(canvas, document.body.firstChild);
 
-    const ctx = canvas.getContext('2d');
+    var ctx = canvas.getContext('2d');
 
-    // Set canvas size
     function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -49,78 +67,56 @@
     resizeHandler = resizeCanvas;
     window.addEventListener('resize', resizeHandler);
 
-    // Matrix characters (mix of katakana, numbers, and symbols)
-    const matrixChars = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*()_+-=[]{}|;:,.<>?/~`';
-    const chars = matrixChars.split('');
+    var matrixChars = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*()_+-=[]{}|;:,.<>?/~`';
+    var chars = matrixChars.split('');
 
-    // Configuration
-    const fontSize = 14;
-    const columns = Math.floor(canvas.width / fontSize);
+    var fontSize = window.innerWidth < 768 ? 12 : 14;
+    var columns = Math.floor(canvas.width / fontSize);
 
-    // Array to track the y position of each column
-    const drops = [];
-    for (let i = 0; i < columns; i++) {
-      drops[i] = Math.random() * -100; // Start above the screen
+    var drops = [];
+    for (var c = 0; c < columns; c++) {
+      drops[c] = Math.random() * -100;
     }
 
-    // Color variations
-    const colors = [
-      'rgba(0, 255, 65, 0.9)',   // Bright green
-      'rgba(0, 255, 65, 0.7)',   // Medium green
-      'rgba(0, 255, 65, 0.5)',   // Dim green
-      'rgba(0, 200, 50, 0.8)',   // Darker green
-      'rgba(0, 212, 255, 0.8)',  // Cyan accent
+    var colors = [
+      'rgba(0, 255, 65, 0.9)',
+      'rgba(0, 255, 65, 0.7)',
+      'rgba(0, 255, 65, 0.5)',
+      'rgba(0, 200, 50, 0.8)',
+      'rgba(0, 212, 255, 0.8)'
     ];
 
-    // Animation function
     function draw() {
-      // Semi-transparent black background for fade effect
       ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Set font
       ctx.font = fontSize + 'px monospace';
 
-      // Draw characters
-      for (let i = 0; i < drops.length; i++) {
-        // Random character
-        const char = chars[Math.floor(Math.random() * chars.length)];
-
-        // Random color (mostly green, occasional cyan)
-        const colorIndex = Math.random() > 0.95 ? 4 : Math.floor(Math.random() * 4);
+      for (var i = 0; i < drops.length; i++) {
+        var char = chars[Math.floor(Math.random() * chars.length)];
+        var colorIndex = Math.random() > 0.95 ? 4 : Math.floor(Math.random() * 4);
         ctx.fillStyle = colors[colorIndex];
 
-        // First character is brighter (head of the drop)
         if (Math.random() > 0.98) {
           ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
         }
 
-        // Draw the character
-        const x = i * fontSize;
-        const y = drops[i] * fontSize;
+        var x = i * fontSize;
+        var y = drops[i] * fontSize;
         ctx.fillText(char, x, y);
 
-        // Reset drop when it reaches bottom or randomly
         if (y > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
         }
-
-        // Move drop down
         drops[i]++;
       }
     }
 
-    // Run animation at ~30fps for performance
     animationTimer = setInterval(draw, 33);
 
-    // Handle visibility change to pause/resume animation
     visibilityHandler = function() {
       if (!canvas) return;
-      if (document.hidden) {
-        canvas.style.display = 'none';
-      } else {
-        canvas.style.display = 'block';
-      }
+      canvas.style.display = document.hidden ? 'none' : 'block';
     };
     document.addEventListener('visibilitychange', visibilityHandler);
   }
@@ -156,66 +152,93 @@
   function initMatrixToggle() {
     updateMatrixToggleUI(isMatrixEnabled());
 
-    const toggles = document.querySelectorAll('[data-matrix-toggle]');
-    toggles.forEach(function(toggle) {
-      toggle.addEventListener('click', function() {
+    var toggles = document.querySelectorAll('[data-matrix-toggle]');
+    for (var i = 0; i < toggles.length; i++) {
+      toggles[i].addEventListener('click', function() {
         applyMatrixSetting(!isMatrixEnabled());
       });
-    });
+    }
   }
 
-  // Wait for DOM to be ready
+  /* ---------- Typing effect ---------- */
+
+  function typeElement(el, speed) {
+    var text = el.textContent;
+    el.textContent = '';
+    el.setAttribute('aria-label', text);
+    var i = 0;
+    var timer = setInterval(function() {
+      if (i <= text.length) {
+        el.textContent = text.slice(0, i);
+        i++;
+      } else {
+        clearInterval(timer);
+      }
+    }, speed || 25);
+  }
+
+  function initTyping() {
+    if (prefersReducedMotion) return;
+
+    var subtitles = document.querySelectorAll('.page-subheading');
+    for (var i = 0; i < subtitles.length; i++) {
+      typeElement(subtitles[i], 22);
+    }
+
+    var custom = document.querySelectorAll('.typing-effect');
+    for (var j = 0; j < custom.length; j++) {
+      typeElement(custom[j], 30);
+    }
+  }
+
+  /* ---------- Scroll reveal ---------- */
+
+  function initScrollReveal() {
+    var elements = document.querySelectorAll('.reveal');
+    if (!elements.length) return;
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].classList.add('revealed');
+      }
+      return;
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    for (var j = 0; j < elements.length; j++) {
+      observer.observe(elements[j]);
+    }
+  }
+
+  /* ---------- Terminal cursor ---------- */
+
+  function initTerminalCursor() {
+    var pageTitle = document.querySelector('.page-heading h1, .post-heading h1');
+    if (pageTitle && !prefersReducedMotion) {
+      var cursor = document.createElement('span');
+      cursor.className = 'terminal-cursor';
+      cursor.innerHTML = '_';
+      pageTitle.appendChild(cursor);
+    }
+  }
+
+  /* ---------- Boot ---------- */
+
   document.addEventListener('DOMContentLoaded', function() {
     if (isMatrixEnabled()) {
       startMatrixRain();
     }
     initMatrixToggle();
-  });
-
-  // Add typing effect to elements with class 'typing-effect'
-  function addTypingEffect() {
-    const elements = document.querySelectorAll('.typing-effect');
-    elements.forEach(function(el) {
-      const text = el.textContent;
-      el.textContent = '';
-      let i = 0;
-      const typeInterval = setInterval(function() {
-        if (i < text.length) {
-          el.textContent += text.charAt(i);
-          i++;
-        } else {
-          clearInterval(typeInterval);
-        }
-      }, 50);
-    });
-  }
-
-  // Add glitch effect on hover for specific elements
-  function addGlitchEffect() {
-    const glitchElements = document.querySelectorAll('.glitch-hover');
-    glitchElements.forEach(function(el) {
-      el.addEventListener('mouseenter', function() {
-        el.classList.add('glitching');
-        setTimeout(function() {
-          el.classList.remove('glitching');
-        }, 500);
-      });
-    });
-  }
-
-  // Initialize effects after page load
-  window.addEventListener('load', function() {
-    addTypingEffect();
-    addGlitchEffect();
-
-    // Add terminal cursor effect to the page title
-    const pageTitle = document.querySelector('.page-heading h1, .post-heading h1');
-    if (pageTitle) {
-      const cursor = document.createElement('span');
-      cursor.className = 'terminal-cursor';
-      cursor.innerHTML = '_';
-      cursor.style.cssText = 'animation: cursor-blink 1s infinite; margin-left: 5px;';
-      pageTitle.appendChild(cursor);
-    }
+    initTyping();
+    initScrollReveal();
+    initTerminalCursor();
   });
 })();

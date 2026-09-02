@@ -14,7 +14,7 @@ $ JOHN LAURON / 23-years old / FILIPINO
 
 I'm a **Software Engineer** navigating the endless streams of Artificial Intelligence and Robotics. My toolkit includes:
 
-- `Cusor IDE` - my weapon of choice
+- `Cursor IDE` - my weapon of choice
 - `terminal` - my natural habitat
 - `coffee` - fuel for late-night coding sessions
 - `innovation` - the drive that keeps me learning
