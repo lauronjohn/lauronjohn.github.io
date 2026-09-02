@@ -461,6 +461,51 @@ blockquote::before {
   padding: 1.5rem 0;
 }
 
+/* Homepage portfolio-first sections */
+.home-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.home-cta-btn {
+  display: inline-block;
+  border: 1px solid var(--matrix-green);
+  color: var(--matrix-green) !important;
+  background: rgba(0, 255, 65, 0.06);
+  padding: 0.6rem 1rem;
+  font-family: var(--header-font);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.home-cta-btn:hover {
+  border-color: var(--cyber-cyan);
+  color: var(--cyber-cyan) !important;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+}
+
+.home-cta-btn-secondary {
+  border-color: var(--cyber-cyan);
+  color: var(--cyber-cyan) !important;
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.home-cta-btn-toggle {
+  cursor: pointer;
+  background: rgba(255, 0, 85, 0.1);
+  border-color: var(--neon-pink);
+  color: var(--neon-pink) !important;
+}
+
+.home-blog-section {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--terminal-border);
+}
+
 /* Terminal prompt style for content */
 .blog-post > p:first-of-type::before {
   content: "user@localhost:~$ ";
@@ -536,4 +581,70 @@ blockquote::before {
 /* 404 page styling */
 body.error-page h1 {
   animation: glitch 0.5s infinite;
+}
+
+/* Project cards */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.project-card {
+  border: 1px solid var(--terminal-border);
+  border-left: 3px solid var(--matrix-green);
+  background: linear-gradient(135deg, rgba(0, 255, 65, 0.03), transparent);
+  padding: 1rem;
+}
+
+.project-card:hover {
+  border-left-color: var(--cyber-cyan);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
+}
+
+.project-card h3 {
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+}
+
+.project-type {
+  color: var(--matrix-green-dim);
+  font-size: 0.9rem;
+}
+
+.project-card ul {
+  margin: 0.75rem 0 1rem;
+  padding-left: 1.1rem;
+}
+
+.project-card-image {
+  width: 100%;
+  min-height: 130px;
+  border: 1px dashed var(--cyber-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--header-font);
+  letter-spacing: 1px;
+}
+
+.project-card-image-placeholder {
+  color: var(--cyber-cyan);
+  background: rgba(0, 212, 255, 0.06);
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-link-chip {
+  border: 1px solid var(--matrix-green);
+  color: var(--matrix-green);
+  background: rgba(0, 255, 65, 0.08);
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
 }

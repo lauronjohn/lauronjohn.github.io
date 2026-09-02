@@ -4,6 +4,12 @@ layout: page
 
 {{ content }}
 
+{% if site.home_show_blog_feed != false %}
+<section class="home-blog-section">
+  <h2>latest_logs</h2>
+  <p>Blog remains available as a secondary section below the portfolio content.</p>
+</section>
+
 {% assign posts = paginator.posts | default: site.posts %}
 
 <!-- role="list" needed so that `list-style: none` in Safari doesn't remove the list semantics -->
@@ -119,4 +125,5 @@ layout: page
   </li>
   {% endif %}
 </ul>
+{% endif %}
 {% endif %}
