@@ -83,6 +83,31 @@ Selected projects focused on computer vision, AI systems, and practical automati
       <span class="project-link-chip">Demo: coming soon</span>
     </div>
   </article>
+
+  <article class="project-card reveal">
+    <div class="project-card-image">
+      <div class="project-card-image-placeholder">
+        <pre class="ascii-thumb">
++-------------------------+
+|   FACE ATTENDANCE       |
+|                         |
+|  [ screenshot pending ] |
+|         █████████       |
++-------------------------+
+</pre>
+      </div>
+    </div>
+    <h3><a href="/projects/face-attendance">Real-Time Face Attendance System</a> <span class="project-type">(Personal)</span></h3>
+    <p>Face recognition-based attendance system for real-time identification and logging.</p>
+    <ul>
+      <li><strong>Stack:</strong> Face detection + recognition pipeline, real-time video processing</li>
+      <li><strong>Outcome:</strong> Automated attendance logging with real-time identification.</li>
+    </ul>
+    <div class="project-links">
+      <span class="project-link-chip">GitHub: coming soon</span>
+      <span class="project-link-chip">Demo: coming soon</span>
+    </div>
+  </article>
 </section>
 
 ---
