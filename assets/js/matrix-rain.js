@@ -6,14 +6,35 @@
 (function() {
   'use strict';
 
-  // Wait for DOM to be ready
-  document.addEventListener('DOMContentLoaded', function() {
-    initMatrixRain();
-  });
+  const MATRIX_PREF_KEY = 'matrix-effect-enabled';
+  let canvas = null;
+  let animationTimer = null;
+  let resizeHandler = null;
+  let visibilityHandler = null;
 
-  function initMatrixRain() {
+  function isMatrixEnabled() {
+    const savedPreference = localStorage.getItem(MATRIX_PREF_KEY);
+    return savedPreference === null ? true : savedPreference === 'true';
+  }
+
+  function updateMatrixToggleUI(enabled) {
+    const toggles = document.querySelectorAll('[data-matrix-toggle]');
+    toggles.forEach(function(toggle) {
+      toggle.textContent = enabled ? 'Matrix Effect: ON' : 'Matrix Effect: OFF';
+      toggle.setAttribute('aria-pressed', String(enabled));
+    });
+  }
+
+  function setMatrixPreference(enabled) {
+    localStorage.setItem(MATRIX_PREF_KEY, String(enabled));
+    updateMatrixToggleUI(enabled);
+  }
+
+  function startMatrixRain() {
+    if (canvas) return;
+
     // Create canvas element
-    const canvas = document.createElement('canvas');
+    canvas = document.createElement('canvas');
     canvas.id = 'matrix-canvas';
     document.body.insertBefore(canvas, document.body.firstChild);
 
@@ -25,7 +46,8 @@
       canvas.height = window.innerHeight;
     }
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    resizeHandler = resizeCanvas;
+    window.addEventListener('resize', resizeHandler);
 
     // Matrix characters (mix of katakana, numbers, and symbols)
     const matrixChars = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*()_+-=[]{}|;:,.<>?/~`';
@@ -89,17 +111,66 @@
     }
 
     // Run animation at ~30fps for performance
-    setInterval(draw, 33);
+    animationTimer = setInterval(draw, 33);
 
     // Handle visibility change to pause/resume animation
-    document.addEventListener('visibilitychange', function() {
+    visibilityHandler = function() {
+      if (!canvas) return;
       if (document.hidden) {
         canvas.style.display = 'none';
       } else {
         canvas.style.display = 'block';
       }
+    };
+    document.addEventListener('visibilitychange', visibilityHandler);
+  }
+
+  function stopMatrixRain() {
+    if (animationTimer) {
+      clearInterval(animationTimer);
+      animationTimer = null;
+    }
+    if (resizeHandler) {
+      window.removeEventListener('resize', resizeHandler);
+      resizeHandler = null;
+    }
+    if (visibilityHandler) {
+      document.removeEventListener('visibilitychange', visibilityHandler);
+      visibilityHandler = null;
+    }
+    if (canvas) {
+      canvas.remove();
+      canvas = null;
+    }
+  }
+
+  function applyMatrixSetting(enabled) {
+    if (enabled) {
+      startMatrixRain();
+    } else {
+      stopMatrixRain();
+    }
+    setMatrixPreference(enabled);
+  }
+
+  function initMatrixToggle() {
+    updateMatrixToggleUI(isMatrixEnabled());
+
+    const toggles = document.querySelectorAll('[data-matrix-toggle]');
+    toggles.forEach(function(toggle) {
+      toggle.addEventListener('click', function() {
+        applyMatrixSetting(!isMatrixEnabled());
+      });
     });
   }
+
+  // Wait for DOM to be ready
+  document.addEventListener('DOMContentLoaded', function() {
+    if (isMatrixEnabled()) {
+      startMatrixRain();
+    }
+    initMatrixToggle();
+  });
 
   // Add typing effect to elements with class 'typing-effect'
   function addTypingEffect() {

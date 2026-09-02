@@ -461,6 +461,51 @@ blockquote::before {
   padding: 1.5rem 0;
 }
 
+/* Homepage portfolio-first sections */
+.home-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.home-cta-btn {
+  display: inline-block;
+  border: 1px solid var(--matrix-green);
+  color: var(--matrix-green) !important;
+  background: rgba(0, 255, 65, 0.06);
+  padding: 0.6rem 1rem;
+  font-family: var(--header-font);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.home-cta-btn:hover {
+  border-color: var(--cyber-cyan);
+  color: var(--cyber-cyan) !important;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+}
+
+.home-cta-btn-secondary {
+  border-color: var(--cyber-cyan);
+  color: var(--cyber-cyan) !important;
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.home-cta-btn-toggle {
+  cursor: pointer;
+  background: rgba(255, 0, 85, 0.1);
+  border-color: var(--neon-pink);
+  color: var(--neon-pink) !important;
+}
+
+.home-blog-section {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--terminal-border);
+}
+
 /* Terminal prompt style for content */
 .blog-post > p:first-of-type::before {
   content: "user@localhost:~$ ";
