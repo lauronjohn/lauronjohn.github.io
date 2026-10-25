@@ -1,7 +1,10 @@
 ---
 layout: page
-title: ./construction_progress
-subtitle: "Intelligent Construction Progress Tracking Pipeline"
+title: Construction Progress Tracking
+kicker: "Case study · Internship"
+subtitle: "Classifying site imagery and drafting progress narratives."
+before-content:
+  - case-back.html
 ---
 
 **Internship project** · Computer Vision + Multimodal AI
@@ -30,4 +33,4 @@ Enabled structured, faster construction progress reporting directly from field i
 
 ---
 
-`[ screenshots + repo link coming soon ]`
+<p class="pending-note">Screenshots and a repository link are on the way.</p>

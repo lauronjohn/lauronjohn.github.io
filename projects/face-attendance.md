@@ -1,7 +1,10 @@
 ---
 layout: page
-title: ./face_attendance
-subtitle: "Real-Time Face Attendance System"
+title: Face Attendance
+kicker: "Case study · Personal"
+subtitle: "Real-time identification and attendance logging from a camera feed."
+before-content:
+  - case-back.html
 ---
 
 **Personal project** · Computer Vision
@@ -29,4 +32,4 @@ Automated real-time identification and attendance logging — removing the manua
 
 ---
 
-`[ screenshots + repo link coming soon ]`
+<p class="pending-note">Screenshots and a repository link are on the way.</p>

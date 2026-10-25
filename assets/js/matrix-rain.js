@@ -36,7 +36,7 @@
   function updateMatrixToggleUI(enabled) {
     var toggles = document.querySelectorAll('[data-matrix-toggle]');
     for (var i = 0; i < toggles.length; i++) {
-      toggles[i].textContent = enabled ? 'Matrix Effect: ON' : 'Matrix Effect: OFF';
+      toggles[i].textContent = enabled ? 'matrix: on' : 'matrix: off';
       toggles[i].setAttribute('aria-pressed', String(enabled));
     }
   }
@@ -141,6 +141,7 @@
   }
 
   function applyMatrixSetting(enabled) {
+    if (prefersReducedMotion) enabled = false;
     if (enabled) {
       startMatrixRain();
     } else {
@@ -233,12 +234,15 @@
   /* ---------- Boot ---------- */
 
   document.addEventListener('DOMContentLoaded', function() {
-    if (isMatrixEnabled()) {
+    var isShell = document.body.classList.contains('theme-shell');
+    if (isShell && isMatrixEnabled()) {
       startMatrixRain();
     }
-    initMatrixToggle();
-    initTyping();
+    if (isShell) {
+      initMatrixToggle();
+      initTyping();
+      initTerminalCursor();
+    }
     initScrollReveal();
-    initTerminalCursor();
   });
 })();

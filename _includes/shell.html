@@ -1,0 +1,154 @@
+<main id="content" class="shell-main">
+  <h1 class="sr-only">John Lauron</h1>
+  <div class="shell-window" id="shell" role="region" aria-label="Interactive terminal">
+    <div class="shell-titlebar">
+      <span class="shell-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="shell-title">root@johnlauron: ~</span>
+      <button class="shell-matrix" type="button" data-matrix-toggle aria-pressed="true">matrix: on</button>
+    </div>
+
+    <div class="shell-screen" id="shell-screen">
+      <div class="shell-log" id="shell-log">
+        <div id="shell-static">
+          <p class="shell-boot" id="shell-boot">session ready — type help, or scroll. The menu works too.</p>
+
+          <p class="shell-line">
+            <span class="shell-ps"><span class="ps-user">root@johnlauron</span><span class="ps-path">:~</span><span class="ps-sig">$</span></span>
+            <span class="shell-cmd">whoami</span>
+          </p>
+          <div class="shell-block">
+            {% include shell-whoami.html %}
+          </div>
+
+          <p class="shell-line">
+            <span class="shell-ps"><span class="ps-user">root@johnlauron</span><span class="ps-path">:~</span><span class="ps-sig">$</span></span>
+            <span class="shell-cmd">what_i_do</span>
+          </p>
+          <div class="shell-block">
+            {% include shell-what.html %}
+          </div>
+
+          <p class="shell-line">
+            <span class="shell-ps"><span class="ps-user">root@johnlauron</span><span class="ps-path">:~</span><span class="ps-sig">$</span></span>
+            <span class="shell-cmd">ls projects</span>
+          </p>
+          <div class="shell-block">
+            {% include shell-projects.html %}
+          </div>
+        </div>
+        <div id="shell-live" aria-live="polite" aria-relevant="additions"></div>
+      </div>
+
+      <form id="shell-form" class="shell-form" autocomplete="off">
+        <label class="shell-prompt" for="shell-input">
+          <span class="prompt-full"><span class="shell-user">root@johnlauron</span><span class="shell-path">:~</span></span>
+          <span class="prompt-short"><span class="shell-user">~</span></span>
+          <span class="shell-sigil" aria-hidden="true">$</span>
+        </label>
+        <input id="shell-input" type="text" enterkeyhint="go" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off" aria-label="Terminal command" placeholder="try help">
+      </form>
+    </div>
+
+    <div class="shell-quick" role="group" aria-label="Suggested commands">
+      <button type="button" data-cmd="help">help</button>
+      <button type="button" data-cmd="ls projects">ls projects</button>
+      <button type="button" data-cmd="cat about">cat about</button>
+      <button type="button" data-cmd="open contact">open contact</button>
+      <button type="button" data-cmd="resume">resume</button>
+    </div>
+    <p class="shell-keys"><kbd>enter</kbd> runs · <kbd>tab</kbd> completes · <kbd>↑</kbd> <kbd>↓</kbd> history</p>
+
+    <template id="tpl-whoami">{% include shell-whoami.html %}</template>
+    <template id="tpl-what">{% include shell-what.html %}</template>
+    <template id="tpl-projects">{% include shell-projects.html %}</template>
+    <template id="tpl-ls">
+      <div class="dir-list">
+        <a href="{{ '/aboutme' | relative_url }}">about</a>
+        <a href="{{ '/projects' | relative_url }}">projects/</a>
+        <a href="{{ '/resume' | relative_url }}">resume</a>
+        <a href="{{ '/contact' | relative_url }}">contact</a>
+        <a href="{{ '/blog' | relative_url }}">blog</a>
+        <a href="{{ '/archive' | relative_url }}">archive</a>
+        <a href="https://lauronflow.app" rel="noopener noreferrer" target="_blank">lauronflow.app</a>
+      </div>
+      <p class="shell-dim">ls projects — readmes for the work</p>
+    </template>
+    <template id="tpl-help">
+      <div class="help-list">
+        <div><button type="button" data-cmd="whoami">whoami</button><span>short bio and links</span></div>
+        <div><button type="button" data-cmd="what_i_do">what_i_do</button><span>what I spend time on</span></div>
+        <div><button type="button" data-cmd="ls">ls</button><span>pages in this site</span></div>
+        <div><button type="button" data-cmd="ls projects">ls projects</button><span>featured work as files</span></div>
+        <div><button type="button" data-cmd="cat about">cat about</button><span>readme — also resume and project names</span></div>
+        <div><button type="button" data-cmd="open contact">open contact</button><span>also about, projects, resume, blog, archive</span></div>
+        <div><button type="button" data-cmd="resume">resume</button><span>open the resume</span></div>
+        <div><button type="button" data-cmd="matrix">matrix</button><span>toggle the rain</span></div>
+        <div><button type="button" data-cmd="clear">clear</button><span>clear the session</span></div>
+      </div>
+      <p class="shell-dim">cat reads. open navigates. The menu at the top does the same thing.</p>
+    </template>
+    <template id="tpl-cat-about">
+      <article class="readme">
+        <p class="readme-kicker">~/aboutme</p>
+        <p>Software engineering master's student at Wuhan University. Builds AI, automation, and full-stack tools, and teaches at WYIS China. Side project: LauronFlow, on-device dictation for macOS.</p>
+        <p><a href="{{ '/aboutme' | relative_url }}">Open the about page</a></p>
+      </article>
+    </template>
+    <template id="tpl-cat-resume">
+      <article class="readme">
+        <p class="readme-kicker">~/resume</p>
+        <p>Education, experience, projects, and a PDF download. M.Sc. Robotics &amp; AI at Wuhan University. AI engineer intern at China Southern Power Grid Technology.</p>
+        <p>
+          <a href="{{ '/resume' | relative_url }}">Open resume</a>
+          <span aria-hidden="true"> · </span>
+          <a href="{{ '/assets/files/john-albert-lauron-resume-2026.pdf' | relative_url }}" download>Download PDF</a>
+        </p>
+      </article>
+    </template>
+    <template id="tpl-cat-construction">
+      <article class="readme">
+        <p class="readme-kicker">internship · projects/construction-progress/</p>
+        <h2>Intelligent Construction Progress Tracking Pipeline</h2>
+        <p>Classifies site imagery and drafts a structured progress narrative from field photos, instead of writing that report by hand.</p>
+        <p class="readme-stack">YOLO · Qwen2.5-VL · LLM pipeline</p>
+        <p><a href="{{ '/projects/construction-progress' | relative_url }}">Open case study</a></p>
+      </article>
+    </template>
+    <template id="tpl-cat-safety">
+      <article class="readme">
+        <p class="readme-kicker">internship · projects/safety-monitoring/</p>
+        <h2>Intelligent On-Site Safety Monitoring System</h2>
+        <p>Detection workflow for missing harnesses, smoking, crane hazards, and fencing on active construction sites.</p>
+        <p class="readme-stack">YOLO11m · multi-dataset detection</p>
+        <p><a href="{{ '/projects/safety-monitoring' | relative_url }}">Open case study</a></p>
+      </article>
+    </template>
+    <template id="tpl-cat-voice">
+      <article class="readme">
+        <p class="readme-kicker">personal · projects/voice-uml/</p>
+        <h2>Real-Time Local AI Voice Agent / UML Generator</h2>
+        <p>A locally hosted voice agent, plus a multi-agent system that turns software requirements into UML.</p>
+        <p class="readme-stack">on-device speech · LLM agents</p>
+        <p><a href="{{ '/projects/voice-uml' | relative_url }}">Open case study</a></p>
+      </article>
+    </template>
+    <template id="tpl-cat-face">
+      <article class="readme">
+        <p class="readme-kicker">personal · projects/face-attendance/</p>
+        <h2>Real-Time Face Attendance System</h2>
+        <p>Face recognition from a camera feed that identifies enrolled people and logs attendance with timestamps.</p>
+        <p class="readme-stack">detection · recognition · real-time video</p>
+        <p><a href="{{ '/projects/face-attendance' | relative_url }}">Open case study</a></p>
+      </article>
+    </template>
+    <template id="tpl-cat-lauronflow">
+      <article class="readme">
+        <p class="readme-kicker">shipped · lauronflow.app</p>
+        <h2>LauronFlow</h2>
+        <p>Menu-bar dictation for macOS. Hold Right Option, speak, release — the words land wherever the cursor is. Speech-to-text runs on the Mac. Audio is not sent anywhere.</p>
+        <p><a href="https://lauronflow.app" rel="noopener noreferrer" target="_blank">Open lauronflow.app</a></p>
+      </article>
+    </template>
+  </div>
+</main>
+<script src="{{ '/assets/js/shell.js' | relative_url }}"></script>

@@ -1,61 +1,60 @@
 ---
 layout: page
-title: ./about
-subtitle: "cat ~/whoami.txt"
+title: About
+kicker: "~/about"
+subtitle: "Software engineer in Wuhan, building AI systems and practical tools."
 ---
 
-```bash
-$ JOHN LAURON / 23-years old / FILIPINO
+<div class="about-hero" markdown="0">
+  <img class="about-photo" src="{{ '/assets/img/john.jpg' | relative_url }}" width="132" height="132" alt="Portrait of John Lauron">
+  <div>
+    <p>I'm a software engineer and a master's student in Robotics and Artificial Intelligence at Wuhan University. I build across AI, automation, and full-stack systems, and I care more about something people can use than a demo that only works once.</p>
+    <p>I also teach and tutor at Wuhan Yangtze International School (WYIS). Cursor and a terminal are where most of the work happens. Coffee is not optional.</p>
+  </div>
+</div>
 
-```
-<p align="center">                    
-  <img src="/assets/img/john.jpg" alt="John Lauron" style="max-width: 300px; border-radius: 50%;">                                 
-</p>   
+## Now
 
-I'm a **Software Engineer** navigating the endless streams of Artificial Intelligence and Robotics. My toolkit includes:
+<dl class="spec-grid">
+  <div>
+    <dt>Studying</dt>
+    <dd>M.Sc. Robotics &amp; AI, Wuhan University (2025–2027)</dd>
+  </div>
+  <div>
+    <dt>Based in</dt>
+    <dd>Wuhan, China</dd>
+  </div>
+  <div>
+    <dt>Also</dt>
+    <dd>Teaching and tutoring at WYIS China</dd>
+  </div>
+  <div>
+    <dt>Editors</dt>
+    <dd>Cursor, VS Code, and zsh</dd>
+  </div>
+</dl>
 
-- `Cursor IDE` - my weapon of choice
-- `terminal` - my natural habitat
-- `coffee` - fuel for late-night coding sessions
-- `innovation` - the drive that keeps me learning
+## Toolkit
 
-### System Specifications
+<ul class="chip-row">
+  <li>Python</li>
+  <li>Java</li>
+  <li>C++</li>
+  <li>C#</li>
+  <li>JavaScript</li>
+  <li>YOLO</li>
+  <li>LLMs</li>
+</ul>
 
-```yaml
-os: MacOS / Linux (Ubuntu) / Windows 11
-shell: zsh
-editor: Cursor IDE/VS Code
-languages:
-  - Python
-  - Java
-  - C++
-  - C#
-interests:
-  - AI Agents 
-  - Large Language Models (LLMs)
-  - Software Architecture
-  - Network and Cybersecurity
-```
+## What I like working on
 
-### My Mission
+- AI agents and language models that do a real job
+- Software architecture that stays readable six months later
+- Networks, systems, and cybersecurity
+- Side projects. One of them is [LauronFlow](https://lauronflow.app), on-device dictation for macOS
 
-```
-> Decrypt the unknown
-> Debug the impossible
-> Deploy the future
-```
+The longer version of school and work is on the [resume](/resume). Selected builds are on [projects](/projects).
 
-Whether it's diving deep into system internals, contributing to open source projects, or exploring the latest in cybersecurity - I'm always ready to learn something new.
-
-### Connect
-
-```bash
-$ ping -c 1 me
-# Response: Ready for collaboration
-```
-
-Feel free to reach out through any of the channels below. Let's build something awesome together.
-
----
-
-*"In a world of ones and zeros, be the one who makes them dance."*
+<blockquote class="pull-quote">
+<p>In a world of ones and zeros, be the one who makes them dance.</p>
+</blockquote>

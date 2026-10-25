@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Hello, world
-subtitle: "> Initializing blog..."
+kicker: "Blog"
+subtitle: "Starting the blog."
 tags: [meta, updates]
 comments: true
 author: John Lauron
@@ -15,9 +16,9 @@ Welcome to my corner of the internet. This is where I'll be writing about the th
 - Notes on tools, workflows, and things I've learned the hard way
 - Occasional experiments that may or may not go anywhere
 
-## Why a terminal theme?
+## Why a terminal on the home page?
 
-Because I spend most of my life in one. The `~/hacker_zone` aesthetic is a nod to where I feel most at home — and a reminder that underneath every polished interface, there's a shell waiting to be poked at.
+Because I spend most of my life in one. The home page is a shell you can type into. The rest of the site stays a normal portfolio so the writing is easy to read. Underneath the pages, there's still a prompt if you want to poke at it.
 
 More coming soon. Stay tuned.
 

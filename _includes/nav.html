@@ -25,8 +25,20 @@
             </div>
           </li>
         {% else %}
+          {%- assign current_path = page.url | remove: '.html' | remove: 'index.html' | append: '/' | replace: '//', '/' -%}
+          {%- assign link_path = link[1] | remove: '.html' | append: '/' | replace: '//', '/' -%}
+          {%- assign is_active = false -%}
+          {%- if current_path == link_path -%}
+            {%- assign is_active = true -%}
+          {%- endif -%}
+          {%- if link_path == '/projects/' and current_path contains '/projects/' -%}
+            {%- assign is_active = true -%}
+          {%- endif -%}
+          {%- if link_path == '/blog/' and page.layout == 'post' -%}
+            {%- assign is_active = true -%}
+          {%- endif -%}
           <li class="nav-item">
-            <a class="nav-link" href="{{ link[1] | relative_url }}">{{ link[0] }}</a>
+            <a class="nav-link{% if is_active %} active{% endif %}" {% if is_active %}aria-current="page"{% endif %} href="{{ link[1] | relative_url }}">{{ link[0] }}</a>
           </li>
         {%- endif -%}
       {%- endfor -%}

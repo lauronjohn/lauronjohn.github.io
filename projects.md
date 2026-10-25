@@ -1,115 +1,72 @@
 ---
 layout: page
-title: ./projects
-subtitle: "ls -la ~/work/featured"
+title: Projects
+kicker: "~/projects"
+subtitle: "Computer vision, local AI, and tools I actually shipped."
 ---
 
-## Featured Work
-
-Selected projects focused on computer vision, AI systems, and practical automation.
+Selected work from an internship, personal builds, and one macOS app. Case studies are short on purpose. Repositories and demos are still being cleaned up for public links.
 
 <section class="project-grid">
-  <article class="project-card reveal">
-    <div class="project-card-image">
-      <div class="project-card-image-placeholder">
-        <pre class="ascii-thumb">
-+-------------------------+
-|  CONSTRUCTION PIPELINE  |
-|                         |
-|  [ screenshot pending ] |
-|         █████████       |
-+-------------------------+
-</pre>
-      </div>
-    </div>
-    <h3><a href="/projects/construction-progress">Intelligent Construction Progress Tracking Pipeline</a> <span class="project-type">(Internship)</span></h3>
-    <p>Built a computer-vision + multimodal pipeline that classifies site imagery and auto-generates progress narratives.</p>
-    <ul>
-      <li><strong>Stack:</strong> YOLO, Qwen2.5-VL, LLM pipeline</li>
-      <li><strong>Outcome:</strong> Enabled structured, faster construction progress reporting from field images.</li>
+  <article class="project-card">
+    <p class="project-kicker">Internship</p>
+    <h3><a href="{{ '/projects/construction-progress' | relative_url }}">Intelligent Construction Progress Tracking Pipeline</a></h3>
+    <p>Computer-vision and multimodal pipeline that classifies site imagery and writes a progress narrative from field photos.</p>
+    <ul class="stack-row">
+      <li>YOLO</li>
+      <li>Qwen2.5-VL</li>
+      <li>LLM reporting</li>
     </ul>
-    <div class="project-links">
-      <span class="project-link-chip">GitHub: coming soon</span>
-      <span class="project-link-chip">Demo: coming soon</span>
-    </div>
+    <p class="card-more"><a href="{{ '/projects/construction-progress' | relative_url }}">Read case study</a></p>
+    <p class="project-pending">Repository and demo links are on the way.</p>
   </article>
 
-  <article class="project-card reveal">
-    <div class="project-card-image">
-      <div class="project-card-image-placeholder">
-        <pre class="ascii-thumb">
-+-------------------------+
-|   SAFETY MONITORING     |
-|                         |
-|  [ screenshot pending ] |
-|         █████████       |
-+-------------------------+
-</pre>
-      </div>
-    </div>
-    <h3><a href="/projects/safety-monitoring">Intelligent On-Site Safety Monitoring System</a> <span class="project-type">(Internship)</span></h3>
-    <p>Developed a detection workflow for critical safety violations in active construction environments.</p>
-    <ul>
-      <li><strong>Stack:</strong> YOLO11m, multi-dataset detection pipeline</li>
-      <li><strong>Outcome:</strong> Monitored safety harness, smoking, crane, and fence violations for on-site safety checks.</li>
+  <article class="project-card">
+    <p class="project-kicker">Internship</p>
+    <h3><a href="{{ '/projects/safety-monitoring' | relative_url }}">Intelligent On-Site Safety Monitoring System</a></h3>
+    <p>Detection workflow for safety violations in active construction environments: harness, smoking, crane, and fence.</p>
+    <ul class="stack-row">
+      <li>YOLO11m</li>
+      <li>Multi-dataset detection</li>
     </ul>
-    <div class="project-links">
-      <span class="project-link-chip">GitHub: coming soon</span>
-      <span class="project-link-chip">Demo: coming soon</span>
-    </div>
+    <p class="card-more"><a href="{{ '/projects/safety-monitoring' | relative_url }}">Read case study</a></p>
+    <p class="project-pending">Repository and demo links are on the way.</p>
   </article>
 
-  <article class="project-card reveal">
-    <div class="project-card-image">
-      <div class="project-card-image-placeholder">
-        <pre class="ascii-thumb">
-+-------------------------+
-|   VOICE AGENT / UML     |
-|                         |
-|  [ screenshot pending ] |
-|         █████████       |
-+-------------------------+
-</pre>
-      </div>
-    </div>
-    <h3><a href="/projects/voice-uml">Real-Time Local AI Voice Agent / Multi-Agent UML Generator</a> <span class="project-type">(Personal)</span></h3>
-    <p>Built a locally-hosted real-time voice agent and a multi-agent system that converts software requirements into UML outputs.</p>
-    <ul>
-      <li><strong>Stack:</strong> Local speech recognition pipeline, LLM-based multi-agent orchestration</li>
-      <li><strong>Outcome:</strong> Improved rapid ideation and requirement-to-design translation workflows.</li>
+  <article class="project-card">
+    <p class="project-kicker">Personal</p>
+    <h3><a href="{{ '/projects/voice-uml' | relative_url }}">Local AI Voice Agent / UML Generator</a></h3>
+    <p>A locally hosted real-time voice agent, and a multi-agent system that turns software requirements into UML.</p>
+    <ul class="stack-row">
+      <li>On-device speech</li>
+      <li>Multi-agent LLM</li>
     </ul>
-    <div class="project-links">
-      <span class="project-link-chip">GitHub: coming soon</span>
-      <span class="project-link-chip">Demo: coming soon</span>
-    </div>
+    <p class="card-more"><a href="{{ '/projects/voice-uml' | relative_url }}">Read case study</a></p>
+    <p class="project-pending">Repository and demo links are on the way.</p>
   </article>
 
-  <article class="project-card reveal">
-    <div class="project-card-image">
-      <div class="project-card-image-placeholder">
-        <pre class="ascii-thumb">
-+-------------------------+
-|   FACE ATTENDANCE       |
-|                         |
-|  [ screenshot pending ] |
-|         █████████       |
-+-------------------------+
-</pre>
-      </div>
-    </div>
-    <h3><a href="/projects/face-attendance">Real-Time Face Attendance System</a> <span class="project-type">(Personal)</span></h3>
-    <p>Face recognition-based attendance system for real-time identification and logging.</p>
-    <ul>
-      <li><strong>Stack:</strong> Face detection + recognition pipeline, real-time video processing</li>
-      <li><strong>Outcome:</strong> Automated attendance logging with real-time identification.</li>
+  <article class="project-card">
+    <p class="project-kicker">Personal</p>
+    <h3><a href="{{ '/projects/face-attendance' | relative_url }}">Real-Time Face Attendance System</a></h3>
+    <p>Face recognition from a camera feed that identifies enrolled people and logs attendance as it happens.</p>
+    <ul class="stack-row">
+      <li>Face detection</li>
+      <li>Recognition</li>
+      <li>Real-time video</li>
     </ul>
-    <div class="project-links">
-      <span class="project-link-chip">GitHub: coming soon</span>
-      <span class="project-link-chip">Demo: coming soon</span>
-    </div>
+    <p class="card-more"><a href="{{ '/projects/face-attendance' | relative_url }}">Read case study</a></p>
+    <p class="project-pending">Repository and demo links are on the way.</p>
+  </article>
+
+  <article class="project-card">
+    <p class="project-kicker">Shipped · macOS</p>
+    <h3><a href="https://lauronflow.app" rel="noopener noreferrer">LauronFlow</a></h3>
+    <p>Menu-bar dictation. Hold Right Option, speak, release, and the words land wherever the cursor is. Speech-to-text runs on the Mac. Audio is not sent anywhere.</p>
+    <ul class="stack-row">
+      <li>Apple Silicon</li>
+      <li>On-device ASR</li>
+      <li>macOS 14+</li>
+    </ul>
+    <p class="card-more"><a href="https://lauronflow.app" rel="noopener noreferrer">Visit lauronflow.app</a></p>
   </article>
 </section>
-
----
-
-Want a detailed look? Each card links to its own case study below, or reach out if you'd like a walkthrough.
