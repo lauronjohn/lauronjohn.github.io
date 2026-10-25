@@ -8,23 +8,23 @@
 
 # John Lauron
 
-> `root@localhost:~# Software Engineer building AI and resilient systems`
+> Software engineer building AI, automation, and resilient systems.
 
-A terminal/matrix-inspired personal website built with [Jekyll](https://jekyllrb.com/) on the [Beautiful Jekyll](https://beautifuljekyll.com/) theme. Live at [johnlauron.me](https://johnlauron.me).
+A hybrid personal site: an interactive terminal on the home page, and readable portfolio pages everywhere else. Built with [Jekyll](https://jekyllrb.com/) on [Beautiful Jekyll](https://beautifuljekyll.com/). Live at [johnlauron.me](https://johnlauron.me).
 
 ## Pages
 
 | Route | Description |
 |-------|-------------|
-| `/` | Landing page (`whoami`, CTAs, featured projects) |
+| `/` | Interactive shell (`whoami`, `ls projects`, `cat`, `open`, `help`) |
 | `/blog` | Blog post feed |
 | `/projects` | Project cards + case-study pages |
 | `/resume` | HTML resume + PDF download |
-| `/aboutme` | Terminal-styled about page |
+| `/aboutme` | About page |
 | `/archive` | Curated bookmarks (tools, websites, reading) |
 | `/contact` | Email + social links |
 | `/tags` | Post tag index |
-| `/404` | ASCII art error page |
+| `/404` | Terminal-styled error page |
 
 ## Tech Stack
 
@@ -32,20 +32,28 @@ A terminal/matrix-inspired personal website built with [Jekyll](https://jekyllrb
 |-----------|------------|
 | Framework | Jekyll 4.x |
 | Base Theme | Beautiful Jekyll 6.0.1 |
-| Styling | Custom CSS (`assets/css/hacker-theme.css`) |
-| Fonts | Fira Code, JetBrains Mono, Share Tech Mono |
+| Styling | Custom CSS (`assets/css/hacker-theme.css`) — shell home, portfolio pages |
+| Fonts | Source Sans 3, JetBrains Mono, Share Tech Mono |
 | Icons | Font Awesome 6.5 |
 | Layout | Bootstrap 4.4.1 |
 
-## Visual effects
+## Home shell
 
-- Matrix rain background (toggleable, persists via `localStorage`)
-- CRT scanlines overlay
-- Terminal typing effect on page subtitles
-- Scroll-reveal fade-ins
-- Glowing headings and custom scrollbars
+The landing page is a terminal you can type into. The bio, focus list, and project files are visible immediately — commands reprint them or open a page.
 
-Effects respect `prefers-reduced-motion`, and the matrix rain can be toggled from the homepage button.
+| Command | What it does |
+| --- | --- |
+| `help` | List commands |
+| `whoami` / `what_i_do` | Reprint the intro |
+| `ls` / `ls projects` | Site pages, or project readmes |
+| `cat about` | Short readme (`resume` and project slugs work too) |
+| `open contact` | Navigate (`about`, `projects`, `resume`, `blog`, `archive`) |
+| `matrix` | Toggle the rain |
+| `clear` | Clear the session |
+
+Arrow keys walk command history. Tab completes. The nav bar does the same job as `open`.
+
+Matrix rain and a light scanline run on the home page only. Both respect `prefers-reduced-motion`. The rain preference is stored in `localStorage`.
 
 ## How to edit
 
@@ -72,7 +80,7 @@ It automatically appears on `/blog` and in search.
 
 ### Add an archive link
 
-Open `archive.md` and add a bullet under the right section:
+Open `archive.md` and add an item under the right list:
 
 ```markdown
 - [Some site](https://example.com) — one-line note.
@@ -82,7 +90,7 @@ Open `archive.md` and add a bullet under the right section:
 
 1. Create `projects/my-project.md` (copy the front matter from an existing case study).
 2. Add a card to `projects.md`.
-3. Add a link in `index.html` under `featured_projects`.
+3. Add a row in `_includes/shell-projects.html` and a `cat` template in `_includes/shell.html` if it should show up in the home shell.
 
 ### Add/edit a page
 
@@ -106,8 +114,9 @@ Edit `_config.yml` (color palette, social links, SEO description, etc.).
 ├── _posts/               # Blog posts
 ├── projects/             # Project case-study pages
 ├── assets/
-│   ├── css/hacker-theme.css   # Custom theme styles
-│   ├── js/matrix-rain.js      # Matrix rain + typing + scroll reveal
+│   ├── css/hacker-theme.css   # Shell + portfolio design system
+│   ├── js/shell.js            # Home terminal commands
+│   ├── js/matrix-rain.js      # Matrix rain (home only) + scroll reveal
 │   └── files/                 # Resume PDF and other downloads
 ├── index.html            # Landing page
 ├── blog.md               # Blog index

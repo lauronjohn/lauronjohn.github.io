@@ -1,34 +1,31 @@
 ---
 layout: page
-title: ./contact
-subtitle: "ping -c 1 me"
+title: Contact
+kicker: "~/contact"
+subtitle: "Email is the fastest way to reach me."
 ---
 
-The fastest way to reach me is email — I check it regularly.
-
-<div class="home-cta-group reveal">
-  <a class="home-cta-btn" href="mailto:john.lauron02@gmail.com">john.lauron02@gmail.com</a>
-  <button class="home-cta-btn home-cta-btn-secondary" type="button" data-copy-email="john.lauron02@gmail.com">Copy Email</button>
-  <a class="home-cta-btn home-cta-btn-secondary" href="https://github.com/lauronjohn">GitHub</a>
-  <a class="home-cta-btn home-cta-btn-secondary" href="https://www.linkedin.com/in/john-lauron">LinkedIn</a>
+<div class="contact-card">
+  <p>Email</p>
+  <p class="contact-email"><a href="mailto:john.lauron02@gmail.com">john.lauron02@gmail.com</a></p>
+  <div class="home-cta-group">
+    <a class="home-cta-btn" href="mailto:john.lauron02@gmail.com">Send email</a>
+    <button class="home-cta-btn home-cta-btn-secondary" type="button" data-copy-email="john.lauron02@gmail.com">Copy email</button>
+    <a class="home-cta-btn home-cta-btn-secondary" href="https://github.com/lauronjohn">GitHub</a>
+    <a class="home-cta-btn home-cta-btn-secondary" href="https://www.linkedin.com/in/john-lauron">LinkedIn</a>
+  </div>
+  <p class="copy-toast" data-copy-toast style="display:none;">Copied to clipboard.</p>
 </div>
 
 ## What I'm up for
 
-- **Collaborations** on AI, computer vision, or robotics projects
-- **Open source** contributions and side projects
-- **Internships / roles** in software engineering and applied AI
+- Collaborations on AI, computer vision, or robotics
+- Open source and side projects
+- Internships and roles in software engineering and applied AI
 
 ## Response time
 
-I typically reply within 1–2 days. If it's urgent, mark the subject line with `[URGENT]`.
-
-```
-$ ssh root@localhost
-> Connection established. Awaiting your message...
-```
-
-<p class="copy-toast" data-copy-toast style="display:none;">Copied to clipboard.</p>
+I typically reply within a day or two. If it's time-sensitive, put `[URGENT]` in the subject.
 
 <script>
 (function() {
@@ -38,11 +35,11 @@ $ ssh root@localhost
     buttons[i].addEventListener('click', function() {
       var email = this.getAttribute('data-copy-email');
       var done = function() {
-        this.textContent = 'Copied!';
+        this.textContent = 'Copied';
         if (toast) { toast.style.display = 'block'; }
         var self = this;
         setTimeout(function() {
-          self.textContent = 'Copy Email';
+          self.textContent = 'Copy email';
           if (toast) { toast.style.display = 'none'; }
         }, 2000);
       }.bind(this);

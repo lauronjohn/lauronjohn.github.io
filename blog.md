@@ -1,9 +1,8 @@
 ---
 layout: blog
-title: ./blog
-subtitle: "tail -f ~/posts.log"
+title: Blog
+kicker: "~/blog"
+subtitle: "Notes on building, learning, and shipping."
 ---
 
-## `latest_logs`
-
-A running log of things I'm building, learning, and thinking about.
+A running log of things I'm building and thinking about. Mostly AI, computer vision, automation, and the occasional systems note.

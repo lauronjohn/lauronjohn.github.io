@@ -139,21 +139,22 @@ description: "John Lauron — software engineer building AI, automation, and res
 
 # Personalize the colours in your website. Colour values can be any valid CSS colour
 
-# Hacker Theme Color Scheme
-page-col: "#0a0a0a"
-text-col: "#00ff41"
-link-col: "#00d4ff"
-hover-col: "#ff0055"
-navbar-col: "#0d0d0d"
-navbar-text-col: "#00ff41"
-navbar-border-col: "#1a1a1a"
-footer-col: "#0d0d0d"
-footer-text-col: "#00ff41"
-footer-link-col: "#00d4ff"
-footer-hover-col: "#ff0055"
+# Shared dark palette. Home overrides this with the terminal shell.
+# Inner pages use these as readable text on a near-black background.
+page-col: "#10141b"
+text-col: "#e6e8ee"
+link-col: "#49d6ee"
+hover-col: "#ff6b8a"
+navbar-col: "#0c1016"
+navbar-text-col: "#d5dbe6"
+navbar-border-col: "#232b38"
+footer-col: "#0c1016"
+footer-text-col: "#a8b0be"
+footer-link-col: "#49d6ee"
+footer-hover-col: "#ff6b8a"
 
-# Mobile theme color (green glow)
-mobile-theme-col: "#00ff41"
+# Mobile browser chrome
+mobile-theme-col: "#10141b"
 
 # Alternatively, the navbar, footer, and page background can be set to an image
 # instead of colour

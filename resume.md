@@ -1,11 +1,14 @@
 ---
 layout: page
-title: ./resume
-subtitle: "cat ~/resume.md"
+title: Resume
+kicker: "~/resume"
+subtitle: "Education, experience, and a PDF you can keep."
 ---
 
-<div class="home-cta-group reveal">
-  <a class="home-cta-btn home-cta-btn-secondary" href="/assets/files/john-albert-lauron-resume-2026.pdf" download>Download PDF</a>
+<div class="home-cta-group">
+  <a class="home-cta-btn" href="{{ '/assets/files/john-albert-lauron-resume-2026.pdf' | relative_url }}" download>Download PDF</a>
+  <a class="home-cta-btn home-cta-btn-secondary" href="{{ '/contact' | relative_url }}">Contact</a>
+  <a class="home-cta-btn home-cta-btn-secondary" href="{{ '/projects' | relative_url }}">Projects</a>
 </div>
 
 ## Contact

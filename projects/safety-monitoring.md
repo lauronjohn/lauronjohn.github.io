@@ -1,7 +1,10 @@
 ---
 layout: page
-title: ./safety_monitoring
-subtitle: "Intelligent On-Site Safety Monitoring System"
+title: On-Site Safety Monitoring
+kicker: "Case study · Internship"
+subtitle: "Detecting harness, smoking, crane, and fence violations."
+before-content:
+  - case-back.html
 ---
 
 **Internship project** · Computer Vision Detection
@@ -29,4 +32,4 @@ Monitored safety harness, smoking, crane, and fence violations — supporting on
 
 ---
 
-`[ screenshots + repo link coming soon ]`
+<p class="pending-note">Screenshots and a repository link are on the way.</p>

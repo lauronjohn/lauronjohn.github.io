@@ -1,7 +1,10 @@
 ---
 layout: page
-title: ./voice_agent_uml
-subtitle: "Real-Time Local AI Voice Agent / Multi-Agent UML Generator"
+title: Voice Agent and UML Generator
+kicker: "Case study · Personal"
+subtitle: "A local voice agent, and a multi-agent path from requirements to UML."
+before-content:
+  - case-back.html
 ---
 
 **Personal projects** · Local AI + Multi-Agent Systems
@@ -26,4 +29,4 @@ Improved rapid ideation and requirement-to-design translation — keeping sensit
 
 ---
 
-`[ screenshots + repo link coming soon ]`
+<p class="pending-note">Screenshots and a repository link are on the way.</p>
